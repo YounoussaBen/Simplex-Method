@@ -30,37 +30,21 @@ optimiser = linprog(c=obj,
                    method='simplex')
 
 # Afficher le résultat de l'optimisation
-print(optimiser)
+print("\nRésultat de l'optimisation :")
+print(f"Équation : {obj[0]}*x1", end="")
+for i in range(1, num_variables):
+    print(f" + {obj[i]}*x{i + 1}", end="")
+print("\nContraintes :")
+for i in range(num_constraints):
+    print(f"{lhs[i][0]}*x1", end="")
+    for j in range(1, num_variables):
+        print(f" + {lhs[i][j]}*x{j + 1}", end="")
+    print(f" <= {rhs[i]}")
+print("Conditions : x1, x2, x3, ... >= 0")
 
-# Exemple d'utilisation avec les entrées de l'utilisateur et la sortie attendue
-"""
-Entrez le nombre de variables : 4
-Entrez le coefficient pour la variable 1 : -5
-Entrez le coefficient pour la variable 2 : 3
-Entrez le coefficient pour la variable 3 : 4
-Entrez le coefficient pour la variable 4 : -7
-Entrez le nombre de contraintes : 3
-Entrez le coefficient pour la variable 1 dans la contrainte 1 : 1
-Entrez le coefficient pour la variable 2 dans la contrainte 1 : 1
-Entrez le coefficient pour la variable 3 dans la contrainte 1 : 1
-Entrez le coefficient pour la variable 4 dans la contrainte 1 : 1
-Entrez le coefficient pour la variable 1 dans la contrainte 2 : 1
-Entrez le coefficient pour la variable 2 dans la contrainte 2 : 0
-Entrez le coefficient pour la variable 3 dans la contrainte 2 : 1
-Entrez le coefficient pour la variable 4 dans la contrainte 2 : 0
-Entrez le coefficient pour la variable 1 dans la contrainte 3 : 2
-Entrez le coefficient pour la variable 2 dans la contrainte 3 : 1
-Entrez le coefficient pour la variable 3 dans la contrainte 3 : 1
-Entrez le coefficient pour la variable 4 dans la contrainte 3 : 0
-Entrez la valeur du côté droit pour la contrainte 1 : 14
-Entrez la valeur du côté droit pour la contrainte 2 : 7
-Entrez la valeur du côté droit pour la contrainte 3 : 13
-     con: array([], dtype=float64)  # Aucune violation de contrainte
-     fun: -98.0  # Valeur optimale de la fonction objectif
- message: 'Optimization terminated successfully.'  # Le solveur a terminé avec succès
-     nit: 7  # Nombre d'itérations effectuées
-   slack: array([ 0.,  7., 13.])  # Variables d'écart (slack) pour chaque contrainte
-  status: 0  # Code de statut 0 signifie une solution optimale trouvée
- success: True  # L'optimisation a réussi
-       x: array([ 0.,  0.,  0., 14.])  # Valeurs optimales des variables
-"""
+print("\nOptimisation terminée avec succès.")
+print(f"La valeur optimale de la fonction objectif est {optimiser.fun}.")
+
+# Afficher les résultats détaillés
+print("\nDétails de l'optimisation :")
+print(optimiser)
