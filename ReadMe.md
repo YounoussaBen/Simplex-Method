@@ -70,6 +70,13 @@ Entrez la valeur du côté droit pour la contrainte 3 : 13
 
 ## Exécution du Code
 
-- Exécutez le fichier `simplexe.py` dans votre terminal ou votre environnement de développement Python.
+- Exécutez le fichier `script.py` dans votre terminal ou votre environnement de développement Python.
+
+```
+     python script.py
+
+```
+
+
 
 ---
